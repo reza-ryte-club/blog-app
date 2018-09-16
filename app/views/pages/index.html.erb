@@ -1,19 +1,32 @@
 <% if user_signed_in? %>
 <h1>Blog App</h1>
-<button>Create a New Post</button>
+<a href="/posts/new">Create a New Post</a>
 
 <p>Latest posts</p>
 
 <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 
 <% else %>
-<h1>Blog App</h1>
-<p>Latest posts</p>
-...
-...
-..
-<p></p>
-<a href="/users/sign_in">Log In</a>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="col text-center app-header display-4">Blog App</h1>
+            <p class="lead text-center ">Your Own Journal</p>
+            <p class="lead text-right "><a href="/users/sign_in" class="text-center"> Click here to Log In</a></p>
+
+            <h2 class="text-center ">Lates Posts</h2>
+
+            <div class="col text-left mt-5" >
+            <% @posts.each do |post| %>
+                    <h4 class="w-50 mx-auto  mt-5"><%= post.title %></h4>
+                    <p class="w-50 mx-auto "><%= post.content %></p>
+            <% end %>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
 
 
 <% end %>
