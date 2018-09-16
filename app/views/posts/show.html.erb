@@ -1,14 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="col text-center  text-center">
+        <a class="display-4 app-header" href="/">Blog App</a>
+      </div>
+      <p class="lead text-center ">Your Own Journal</p>
+      
+      <% if user_signed_in? %>
+        <div class="text-right">
+          <a class="lead" rel="nofollow" data-method="delete" href="/users/sign_out">
+            logout
+          </a>
+        </div>
+      <% else%>
+        <p  class="lead text-right">
+          <span class="lead text-right mr-5"><a href="/users/sign_in" class="text-center"> log in</a></span> 
+          <span class="lead text-right"><a href="/users/sign_up" class="text-center"> sign up</a></span>
+        </p>
+      <% end %>
+      
+      <div class="col mx-auto text-center  display-4 mt-5 border-0 blog-title" 
+        placeholder="Write down a title">
+        <%= @post.title %>
+      </div>      
+      
+      <div class="col mx-auto text-left border-0 blog-content lead">
+        <%=@post.content%>
+      </div>
+    </div>
+  </div>
+</div>

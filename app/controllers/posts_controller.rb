@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :show
+  skip_before_action :verify_authenticity_token
+  
+  
 
   # GET /posts
   # GET /posts.json
@@ -25,17 +28,24 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
-
+    @post = Post.new
+    @post.title = post_params[:title]
+    @post.content = post_params[:content]
+    @post.users_id = current_user.id
+    
+    if(post_params[:is_published])
+      @post.is_published = post_params[:is_published]
+    end
+    
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+        message = {id: @post.id}
+        format.json { render json: message}
       else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        return format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /posts/1
@@ -43,10 +53,9 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
+        message = {status: "successfull"}
+        format.json { render json: message}
       else
-        format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
@@ -70,6 +79,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :users_id, :is_published)
     end
 end

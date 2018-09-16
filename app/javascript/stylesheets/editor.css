@@ -1,0 +1,19 @@
+.blog-title {
+  margin: 0px 0px;
+  padding: 5px;
+  min-height: 10px;
+  line-height: 16px;
+  width: 96%;
+  display: block;
+  margin: 0px auto;
+}
+
+.app-header {
+  cursor: pointer;
+  text-decoration: none !important;
+  color: black;
+}
+
+.app-header:hover {
+  color: darkblue;
+}

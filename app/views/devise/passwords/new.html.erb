@@ -1,3 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <div class="col text-center  text-center">
+          <a class="display-4 app-header" href="/">Blog App</a
+        ></div>
+        <p class="lead text-center mb-5">Your Own Journal</p>
+        <h2 class="col text-center  mb-5">Sign Up</h2>            
+        <div class="text-center  mt-5">
 <h2>Forgot your password?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
@@ -5,12 +14,16 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"w-50 mx-auto text-center form-control"%>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="actions text-center mt-5 mb-2">
+    <%= f.submit "Send me reset password instructions" , class: "btn btn-primary"  %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
+</div>
