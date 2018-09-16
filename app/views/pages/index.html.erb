@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+<h1>Blog App</h1>
+<button>Create a New Post</button>
+
+<p>Latest posts</p>
+
+<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+
+<% else %>
+<h1>Blog App</h1>
+<p>Latest posts</p>
+...
+...
+..
+<p></p>
+<a href="/users/sign_in">Log In</a>
+
+
+<% end %>
