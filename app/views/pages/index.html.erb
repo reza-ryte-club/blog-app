@@ -21,7 +21,11 @@
                     <span class="lead text-right mr-5"><a href="/users/sign_in" class="text-center"> log In</a></span> 
                     <span class="lead text-right"><a href="/users/sign_up" class="text-center"> sign up</a></span>
                 </p>
-                <h2 class="text-center ">Lates Posts</h2>
+                <% if @posts.size > 0 %>
+                    <h2 class="text-center ">Latest Posts</h2>
+                <% else %>
+                    <h2 class="text-center ">There is no blog posts now</h2>
+                <% end %>
                 <div class="col text-left mt-5" >
                     <% @posts.each do |post| %>
                         <h4 class="w-50 mx-auto  mt-5 app-header" ><a class="app-header" href="/posts/<%= post.id %>"><%= post.title %></ a></h4>
