@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise','4.5.0'
 gem 'popper_js','1.14.3'
 gem 'autoprefixer-rails','9.1.4'
-gem 'bootstrap', ~> '4.1.2'
+gem 'bootstrap', '~> 4.1.2'
 gem 'jquery','0.0.1'
 
 
