@@ -46,9 +46,9 @@ class Editor extends Component {
               <button className="btn btn-info m-2" onClick={this.save}>
                 save
               </button>
-              <button className="btn btn-danger" onClick={this.publish}>
+              {/* <button className="btn btn-danger" onClick={this.publish}>
                 publish
-              </button>
+              </button> */}
             </p>
             <textarea
               className="col mx-auto text-left border-0 blog-content lead"
@@ -89,6 +89,7 @@ class Editor extends Component {
               { postId: data.id, runtime: currentState.state.runtime + 1 },
               () => {
                 console.log(currentState.state);
+                alert("Saved");
               }
             );
           },
@@ -105,6 +106,7 @@ class Editor extends Component {
           },
           success: data => {
             console.log(data);
+            alert("Saved");
           },
           dataType: JSON.stringify()
         });
