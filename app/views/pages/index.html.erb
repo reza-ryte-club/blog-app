@@ -9,7 +9,11 @@
             <% if user_signed_in? %>
                 <p class="w-50 mx-auto  text-right "><%= link_to "logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></p>
                 <p class="w-50 mx-auto  mt-5 lead text-left "><a href="/posts/new" class="navbar-link text-left">Create a New Post</a></p>
-                <h2 class="text-center ">Your Posts</h2>
+                <% if @my_posts.size > 0 %>
+                    <h2 class="text-center ">Your Posts</h2>
+                <% else %>
+                    <h2 class="text-center ">You haven't write a post yet</h2>
+                <% end %>
                 <div class="col text-left mt-5" >
                     <% @my_posts.each do |post| %>
                         <h4 class="w-50 mx-auto  mt-5 app-header" ><a class="app-header" href="/posts/<%= post.id %>"><%= post.title %></ a></h4>
